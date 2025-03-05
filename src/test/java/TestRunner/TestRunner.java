@@ -8,7 +8,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
         glue = "StepDefs",
         plugin ={
                 "pretty",
-                "html:target/cucumber-reports.html"
+                //"html:target/cucumber-reports.html"
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
 )
 

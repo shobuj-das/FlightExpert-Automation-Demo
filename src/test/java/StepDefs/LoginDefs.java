@@ -28,15 +28,16 @@ public class LoginDefs {
         signinPage.writeOnElement(signinPage.passwordField, "shobuj1234");
     }
 
-    @And("User click on eye button beside password")
-    public void userClickOnEyeButtonBesidePassword() throws InterruptedException {
-        signinPage.clickOnElement(signinPage.maskPassword);
-        Thread.sleep(2000);
-    }
+//    @And("User click on eye button beside password")
+//    public void userClickOnEyeButtonBesidePassword() throws InterruptedException {
+//        signinPage.clickOnElement(signinPage.maskPassword);
+//        Thread.sleep(2000);
+//    }
 
     @And("User click on the sign in button")
     public void userClickOnTheSignInButton() throws InterruptedException {
         signinPage.clickOnElement(signinPage.signinButton);
+        Thread.sleep(2000);
     }
 
     @Then("User should be on the home page")
@@ -45,4 +46,19 @@ public class LoginDefs {
     }
 
 
+    @When("user enter valid email")
+    public void userEnterValidEmail() throws InterruptedException {
+        signinPage.writeOnElement(signinPage.emailField, "shobuj1111@yopmail.com");
+        Thread.sleep(2000);
+    }
+
+    @And("user enter invalid password")
+    public void userEnterInvalidPassword() throws InterruptedException{
+        signinPage.writeOnElement(signinPage.passwordField, "incorrectPass");
+    }
+
+    @Then("Error message should be displayed")
+    public void errorMessageShouldBeDisplayed() throws InterruptedException {
+        Assert.assertEquals(signinPage.getElementText(signinPage.errorMgs),"The provided credentials are incorrect.");
+    }
 }

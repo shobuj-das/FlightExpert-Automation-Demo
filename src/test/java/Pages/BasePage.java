@@ -1,12 +1,15 @@
 package Pages;
 
 import Utilities.DriverSetup;
-import io.cucumber.java.sl.In;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
 public class BasePage extends DriverSetup {
@@ -26,10 +29,13 @@ public class BasePage extends DriverSetup {
         getElement(locator).sendKeys(text);
     }
 
-    public String getText(By locator) throws InterruptedException {
+    public String getElementText(By locator) throws InterruptedException {
         return getElement(locator).getText();
     }
 
+    public String getAttributeText(By locator , String attributeName) throws InterruptedException {
+        return getElement(locator).getDomAttribute(attributeName);
+    }
     public boolean getDisplayStatus(By locator) throws InterruptedException {
         return getElement(locator).isDisplayed();
     }
@@ -44,5 +50,9 @@ public class BasePage extends DriverSetup {
 
     public void loadAWebPage(String url){
         getDriver().get(url);
+    }
+
+    public void addScreenShoot(String name){
+        Allure.addAttachment(name, new ByteArrayInputStream(((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES)));
     }
 }
