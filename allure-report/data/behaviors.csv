@@ -1,0 +1,5 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Signin","Sign in with invalid email","0","1","0","0","0"
+"","Signin","Sign in with valid credentials","0","0","1","0","0"
+"","Sign in page","Sign in with valid credentials","0","0","1","0","0"
+"","Sign in page","UI validation","0","0","1","0","0"

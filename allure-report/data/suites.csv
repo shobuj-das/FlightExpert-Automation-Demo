@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Wed Mar 05 15:16:19 BDT 2025","Wed Mar 05 15:16:44 BDT 2025","25054","","Signin","","Sign in with invalid email","","Sign in with invalid email",""
+"passed","Wed Mar 05 15:14:57 BDT 2025","Wed Mar 05 15:16:19 BDT 2025","81793","","Signin","","Sign in with valid credentials","","Sign in with valid credentials",""
+"passed","Thu Mar 06 21:16:03 BDT 2025","Thu Mar 06 21:16:14 BDT 2025","10974","","Sign in page","","Sign in with valid credentials","","Sign in with valid credentials",""
+"passed","Fri Mar 07 01:23:51 BDT 2025","Fri Mar 07 01:23:57 BDT 2025","6204","","Sign in page","","UI validation","","UI validation",""

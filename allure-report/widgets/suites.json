@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"9429e004da311cc174e51c4d619d1185","name":"Signin","statistic":{"failed":0,"broken":1,"skipped":0,"passed":1,"unknown":0,"total":2}},{"uid":"b5ce57464976182f41e8754d6f5d123d","name":"Sign in page","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}}]}
