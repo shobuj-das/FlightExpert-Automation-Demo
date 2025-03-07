@@ -1,6 +1,5 @@
 package StepDefs;
 
-import Pages.BasePage;
 import Pages.HomePage;
 import Pages.SigninPage;
 import io.cucumber.java.en.And;
@@ -42,12 +41,14 @@ public class SignInDefs {
     @And("User click on the sign in button")
     public void userClickOnTheSignInButton() throws InterruptedException {
         signinPage.clickOnElement(signinPage.signinButton);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     @Then("User should be on the home page")
-    public void userShouldBeOnTheHomePage(){
+    public void userShouldBeOnTheHomePage() throws InterruptedException{
         Assert.assertEquals(getDriver().getCurrentUrl(), homePage.homepageUrl);
+        Assert.assertTrue(signinPage.getDisplayStatus(homePage.profile));
+        signinPage.addScreenShoot("Home Page after sign in");
     }
 
 
@@ -188,5 +189,36 @@ public class SignInDefs {
 
     @And("Checkbox colour is matched with design document")
     public void checkboxColourIsMatchedWithDesignDocument() {
+
+    }
+
+    @When("User enters {string} in the email field")
+    public void userEntersInTheEmailField(String arg0) throws InterruptedException{
+        wait.until(ExpectedConditions.presenceOfElementLocated(signinPage.emailField));
+        signinPage.writeOnElement(signinPage.emailField,arg0);
+    }
+
+    @And("User enters {string} in the password field")
+    public void userEntersInThePasswordField(String arg0) throws InterruptedException{
+        wait.until(ExpectedConditions.presenceOfElementLocated(signinPage.passwordField));
+        signinPage.writeOnElement(signinPage.passwordField,arg0);
+    }
+
+    @Then("User should see {string} {string} {string} error message")
+    public void userShouldSeeErrorMessage(String emailErrorMgs, String passwordErrorMgs, String signInErrorMgs) throws InterruptedException{
+        SoftAssert sf = new SoftAssert();
+
+        if(!emailErrorMgs.isEmpty()){
+            sf.assertEquals(signinPage.getElementText(signinPage.emailErrorMgs),emailErrorMgs);
+            signinPage.addScreenShoot("Email field error message");
+        }
+        if(!passwordErrorMgs.isEmpty()){
+            sf.assertEquals(signinPage.getElementText(signinPage.passwordErrorMgs),passwordErrorMgs);
+        }
+        if(!signInErrorMgs.isEmpty()){
+            sf.assertEquals(signinPage.getElementText(signinPage.signInFailedErrorMgs),signInErrorMgs);
+        }
+
+        sf.assertAll();
     }
 }

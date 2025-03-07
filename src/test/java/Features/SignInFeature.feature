@@ -1,17 +1,17 @@
 Feature: Sign in page
-#  Scenario: Sign in with valid credentials
-#    Given User should be on the sign in page
-#    When user enter valid username and password
-#   # And User click on eye button beside password
-#    And User click on the sign in button
-#    Then User should be on the home page
+  Scenario: Sign in with valid credentials
+    Given User should be on the sign in page
+    When user enter valid username and password
+   # And User click on eye button beside password
+    And User click on the sign in button
+    Then User should be on the home page
 
-#  Scenario: Sign in with invalid email
-#    Given User should be on the sign in page
-#    When user enter valid email
-#    And user enter invalid password
-#    And User click on the sign in button
-#    Then Error message should be displayed
+  Scenario: Sign in with invalid email
+    Given User should be on the sign in page
+    When user enter valid email
+    And user enter invalid password
+    And User click on the sign in button
+    Then Error message should be displayed
 
   Scenario: UI validation
     Given User should be on the sign in page
@@ -41,11 +41,14 @@ Feature: Sign in page
 
   Scenario Outline: User should not be able to sign in with invalid credentials
     Given User should be on the sign in page
-    When User enter <email> on the email field
-    And User enter <password> on the password field
+    When User enters <email> in the email field
+    And User enters <password> in the password field
     And User click on the sign in button
-    Then User should see an <errorMgs> error message
+    Then User should see <emailErrorMgs> <passwordErrorMgs> <signInErrorMgs> error message
     Examples:
-      | email                | password    | errorMgs               |
-      | "shobuj@yopmail.com" | ""          | "Password is required" |
-      | ""                   | "shobuj123" | "Email is required"    |
+      | email                | password        | emailErrorMgs       | passwordErrorMgs       | signInErrorMgs                            |
+      | "shobuj@yopmail.com" | ""              | ""                  | "Password is required" | ""                                        |
+      | ""                   | "shobuj123"     | "Email is required" | ""                     | ""                                        |
+      | "shobuj@yopmail.com" | "incorrectPass" | ""                  | ""                     | "The provided credentials are incorrect." |
+
+

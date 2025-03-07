@@ -20,7 +20,8 @@ public class SigninPage extends BasePage{
     public By forgetPassword = By.xpath("//button[normalize-space()='Forgot Password?']");
     public By passwordErrorMgs = By.cssSelector("div[id='show_hide_password'] div div[class='invalid-feedback']");
     public By emailErrorMgs = By.cssSelector("div[class='mb-4 '] div div[class='invalid-feedback']");
-    public By signInFailErrorMgs = By.xpath("(//p[@class='text-danger fs-14 fw-bold '])[1]");
+//    public By signInFailedErrorMgs = By.xpath("(//p[@class='text-danger fs-14 fw-bold '])[1]");
+    public By signInFailedErrorMgs = By.cssSelector(".text-danger.fs-14.fw-bold");
     public By emailFieldLabel = By.xpath("//label[@for='email']");
     public By passwordFieldLabel = By.cssSelector("div[class='password form-group mb-4'] label[class='form-label fs-18 text-clr-purple-light fw-normal']");
     public By closeButton = By.className("btn-close");

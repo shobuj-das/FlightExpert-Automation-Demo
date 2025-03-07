@@ -7,6 +7,7 @@ public class HomePage extends BasePage{
 
     // locators
     public By signin = By.xpath("//button[normalize-space()='Sign in']");
+    public By profile = By.xpath("//div[@class='d-flex']/p[starts-with(@class, 'fw-bold text-dark')]");
     public By flight = By.xpath("//span[@class='tab-options'][normalize-space()='Flight']");
     public By hotel = By.xpath("//span[contains(text(),'Hotel')]");
     public By visa = By.xpath("//span[@class='ms-1 tab-options']");
