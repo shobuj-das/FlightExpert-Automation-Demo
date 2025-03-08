@@ -20,6 +20,7 @@ public class SignInDefs {
     SigninPage signinPage = new SigninPage();
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
     SoftAssert softAssert = new SoftAssert();
+
     @Given("User should be on the sign in page")
     public void userShouldBeOnTheSignInPage() {
         getDriver().get(homePage.homepageUrl);
@@ -92,8 +93,8 @@ public class SignInDefs {
         wait.until(ExpectedConditions.presenceOfElementLocated(signinPage.emailAsterisk));
         Assert.assertTrue(signinPage.getDisplayStatus(signinPage.emailAsterisk));
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(signinPage.passwordAstesirk));
-        Assert.assertTrue(signinPage.getDisplayStatus(signinPage.passwordAstesirk));
+        wait.until(ExpectedConditions.presenceOfElementLocated(signinPage.passwordAsterisk));
+        Assert.assertTrue(signinPage.getDisplayStatus(signinPage.passwordAsterisk));
     }
 
     @And("Email field labeled as {string} on sign in page")
@@ -180,6 +181,7 @@ public class SignInDefs {
     @And("Create an account link text is present")
     public void createAnAccountLinkTextIsPresent() throws InterruptedException{
         softAssert.assertTrue(signinPage.getDisplayStatus(signinPage.createAccount));
+        softAssert.assertTrue(signinPage.getEnableStatus(signinPage.createAccount));
     }
 
     @And("Sign in button colour is matched with design document")
@@ -218,7 +220,6 @@ public class SignInDefs {
         if(!signInErrorMgs.isEmpty()){
             sf.assertEquals(signinPage.getElementText(signinPage.signInFailedErrorMgs),signInErrorMgs);
         }
-
         sf.assertAll();
     }
 }
