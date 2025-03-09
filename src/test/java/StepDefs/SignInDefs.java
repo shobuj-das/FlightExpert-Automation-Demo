@@ -22,7 +22,7 @@ public class SignInDefs {
     SoftAssert softAssert = new SoftAssert();
 
     @Given("User should be on the sign in page")
-    public void userShouldBeOnTheSignInPage() {
+    public void userShouldBeOnTheSignInPage() throws InterruptedException{
         getDriver().get(homePage.homepageUrl);
         signinPage.clickOnElement(homePage.signin);
     }
@@ -47,7 +47,7 @@ public class SignInDefs {
 
     @Then("User should be on the home page")
     public void userShouldBeOnTheHomePage() throws InterruptedException{
-        Assert.assertEquals(getDriver().getCurrentUrl(), homePage.homepageUrl);
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://flightexpert.com/");
         Assert.assertTrue(signinPage.getDisplayStatus(homePage.profile));
         signinPage.addScreenShoot("Home Page after sign in");
     }
@@ -56,7 +56,7 @@ public class SignInDefs {
     @When("user enter valid email")
     public void userEnterValidEmail() throws InterruptedException {
         signinPage.writeOnElement(signinPage.emailField, "shobuj1111@yopmail.com");
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
     }
 
     @And("user enter invalid password")
@@ -66,9 +66,8 @@ public class SignInDefs {
 
     @Then("Error message should be displayed")
     public void errorMessageShouldBeDisplayed() throws InterruptedException {
-        Assert.assertEquals(signinPage.getElementText(signinPage.errorMgs),"The provided credentials are incorrect.");
+        Assert.assertEquals(signinPage.getElementText(signinPage.signInFailedErrorMgs),"The provided credentials are incorrect.");
     }
-
 
     @Then("Sign in page should be appeared after clicking button")
     public void signInPageShouldBeAppearedAfterClickingButton() throws InterruptedException{
@@ -216,9 +215,11 @@ public class SignInDefs {
         }
         if(!passwordErrorMgs.isEmpty()){
             sf.assertEquals(signinPage.getElementText(signinPage.passwordErrorMgs),passwordErrorMgs);
+            signinPage.addScreenShoot("Password field error message");
         }
         if(!signInErrorMgs.isEmpty()){
             sf.assertEquals(signinPage.getElementText(signinPage.signInFailedErrorMgs),signInErrorMgs);
+            signinPage.addScreenShoot("Sign in field error message");
         }
         sf.assertAll();
     }

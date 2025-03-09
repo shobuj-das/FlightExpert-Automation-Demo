@@ -85,12 +85,18 @@ public class SignUpDefs {
 
     @Given("Display Sign up page")
     public void displaySignUpPage() throws InterruptedException{
+//        getDriver().get(homePage.homepageUrl);
+//        Thread.sleep(2000);
+//        signupPage.clickOnElement(homePage.signin);
+//        Thread.sleep(2000);
+//        signupPage.clickOnElement(signinPage.createAccount);
+//        Thread.sleep(3000);
+
         getDriver().get(homePage.homepageUrl);
         Thread.sleep(2000);
-        signupPage.clickOnElement(homePage.signin);
+        signinPage.clickOnElement(homePage.signin);
         Thread.sleep(2000);
-        signupPage.clickOnElement(signinPage.createAccount);
-        Thread.sleep(3000);
+        signinPage.clickOnElement(signinPage.createAccount);
     }
 
     @Then("User see the sign up button")

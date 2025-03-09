@@ -6,9 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
@@ -21,9 +23,9 @@ public class BasePage extends DriverSetup {
 //        return getDriver().findElement(locator);
     }
 
-    public void clickOnElement(By locator){
-//        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    public void clickOnElement(By locator) throws InterruptedException{
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        getElement(locator).click();
     }
 
     public void clearInputText(By locator){
@@ -65,5 +67,10 @@ public class BasePage extends DriverSetup {
 
     public void addScreenShoot(String name){
         Allure.addAttachment(name, new ByteArrayInputStream(((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES)));
+    }
+
+    public void hoverOnElement(By locator) throws InterruptedException{
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(getElement(locator)).build().perform();
     }
 }

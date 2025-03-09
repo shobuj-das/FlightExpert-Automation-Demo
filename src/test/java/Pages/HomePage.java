@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage{
-    public String homepageUrl = "https://flightexpert.com/";
+    public String homepageUrl = "https://www.flightexpert.com";
 
     // locators
     public By signin = By.xpath("//button[normalize-space()='Sign in']");

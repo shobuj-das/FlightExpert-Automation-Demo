@@ -40,6 +40,4 @@ public class SignupPage extends BasePage {
     public By signupPageTitle = By.xpath("//h3[normalize-space()='Sign up']");
     public By alreadyHaveAccText = By.className("have-acc text-clr-gray fs-6 fw-normal text-center mb-0");
 
-
-
 }

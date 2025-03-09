@@ -20,10 +20,10 @@ public class SigninPage extends BasePage{
 
 
     // --- error messages
-    public By emailErrorMgs = By.cssSelector("div[class='mb-4 '] div div[class='invalid-feedback']");
-    public By passwordErrorMgs = By.cssSelector("div[id='show_hide_password'] div div[class='invalid-feedback']");
-    public By errorMgs = By.xpath("//p[@class='text-danger fs-14 fw-bold ']");
-    public By signInFailedErrorMgs = By.cssSelector(".text-danger.fs-14.fw-bold");
+    public By emailErrorMgs = By.xpath("//input[@name='email']/following-sibling::div[@class='invalid-feedback']");
+    public By passwordErrorMgs = By.xpath("//input[@name='password']/following-sibling::div[@class='invalid-feedback']");
+
+    public By signInFailedErrorMgs = By.xpath("//div[starts-with(@class,'form-check')]/following-sibling::p[starts-with(@class,'text-danger')]");
 //        public By signInFailedErrorMgs = By.xpath("(//p[@class='text-danger fs-14 fw-bold '])[1]");
     // --- labels
     public By checkBoxLabel = By.xpath("//label[normalize-space()='Remember me']");
