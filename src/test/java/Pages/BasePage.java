@@ -15,17 +15,17 @@ import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
 public class BasePage extends DriverSetup {
-    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
+    public WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
 
     public WebElement getElement(By locator) throws InterruptedException{
 //        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-//        return getDriver().findElement(locator);
+//        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return getDriver().findElement(locator);
     }
 
     public void clickOnElement(By locator) throws InterruptedException{
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        getElement(locator).click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+//        getElement(locator).click();
     }
 
     public void clearInputText(By locator){

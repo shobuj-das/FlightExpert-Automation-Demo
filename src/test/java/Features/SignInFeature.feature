@@ -5,13 +5,8 @@ Feature: Sign in page
    # And User click on eye button beside password
     And User click on the sign in button
     Then User should be on the home page
-
-  Scenario: Sign in with invalid email
-    Given User should be on the sign in page
-    When user enter valid email
-    And user enter invalid password
-    And User click on the sign in button
-    Then Error message should be displayed
+    And User should see the profile option on home page
+    And Validate all assertion
 
   Scenario: UI validation
     Given User should be on the sign in page
@@ -39,16 +34,27 @@ Feature: Sign in page
 #    And Checkbox colour is matched with design document
     And Validate all assertion
 
+  Scenario: Checkbox validation
+    Given User should be on the sign in page
+    When User enter credentials to the email and password field
+    Then Checkbox should be checked by default
+    And User clicks on the checkbox
+    Then Credentials should remain in the email and password fields
+    And The checkbox should be unchecked
+    And User clicks on the checkbox
+    Then The checkbox should be checked
+
   Scenario Outline: User should not be able to sign in with invalid credentials
     Given User should be on the sign in page
     When User enters <email> in the email field
     And User enters <password> in the password field
     And User click on the sign in button
     Then User should see <emailErrorMgs> <passwordErrorMgs> <signInErrorMgs> error message
+    And Validate all assertion
     Examples:
-      | email                | password        | emailErrorMgs       | passwordErrorMgs       | signInErrorMgs                            |
-      | "shobuj@yopmail.com" | ""              | ""                  | "Password is required" | ""                                        |
-      | ""                   | "shobuj123"     | "Email is required" | ""                     | ""                                        |
-      | "shobuj@yopmail.com" | "incorrectPass" | ""                  | ""                     | "The provided credentials are incorrect." |
-
-
+      | email                | password        | emailErrorMgs           | passwordErrorMgs       | signInErrorMgs                            |
+      | "shobuj@yopmail.com" | ""              | ""                      | "Password is required" | ""                                        |
+      | ""                   | "shobuj123"     | "Email is required"     | ""                     | ""                                        |
+      | "shobuj@yopmail.com" | "incorrectPass" | ""                      | ""                     | "The provided credentials are incorrect." |
+      | "testing"            | "shobuj1234"    | "Must be a valid email" | ""                     | ""                                        |
+      | "testing@"           | "shobuj123"     | "Must be a valid email" | ""                     | ""                                        |

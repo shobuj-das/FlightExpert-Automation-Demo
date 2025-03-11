@@ -31,7 +31,7 @@ public class DriverSetup {
 
     public static void openABrowser(String browserName) throws InterruptedException{
        WebDriver driver = getBrowser(browserName);
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
        driver.manage().window().maximize();
        setDriver(driver);
     }
