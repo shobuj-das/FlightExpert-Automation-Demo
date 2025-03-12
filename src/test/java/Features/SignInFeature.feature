@@ -44,6 +44,16 @@ Feature: Sign in page
     And User clicks on the checkbox
     Then The checkbox should be checked
 
+  Scenario: Sign-in button validation
+    Given User should be on the sign in page
+    Then Sign in button is present
+#    And Sign in button is clickable
+    And Sign in button is labeled as "Sign in"
+    And Sign in button color is red
+    And Sing in button colour changed when hover over the button
+    And Sign in button colour is "rgba(47, 5, 10, 1)" after hover
+
+
   Scenario Outline: User should not be able to sign in with invalid credentials
     Given User should be on the sign in page
     When User enters <email> in the email field
@@ -55,6 +65,6 @@ Feature: Sign in page
       | email                | password        | emailErrorMgs           | passwordErrorMgs       | signInErrorMgs                            |
       | "shobuj@yopmail.com" | ""              | ""                      | "Password is required" | ""                                        |
       | ""                   | "shobuj123"     | "Email is required"     | ""                     | ""                                        |
-      | "shobuj@yopmail.com" | "incorrectPass" | ""                      | ""                     | "The provided credentials are incorrect." |
       | "testing"            | "shobuj1234"    | "Must be a valid email" | ""                     | ""                                        |
       | "testing@"           | "shobuj123"     | "Must be a valid email" | ""                     | ""                                        |
+      | "shobuj@yopmail.com" | "incorrectPass" | ""                      | ""                     | "The provided credentials are incorrect." |

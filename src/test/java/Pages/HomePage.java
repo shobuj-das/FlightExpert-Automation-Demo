@@ -12,6 +12,4 @@ public class HomePage extends BasePage{
     public By hotel = By.xpath("//span[contains(text(),'Hotel')]");
     public By visa = By.xpath("//span[@class='ms-1 tab-options']");
     public By esim = By.xpath("//button[@id='react-aria2657467692-:r0:-tab-esim']//span[@class='mx-1 py-0']");
-
-
 }

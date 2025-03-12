@@ -46,10 +46,11 @@ public class SignInDefs {
     }
 
     @Then("User should be on the home page")
-    public void userShouldBeOnTheHomePage() throws InterruptedException{
+    public void userShouldBeOnTheHomePage() {
 //        softAssert.assertEquals(getDriver().getCurrentUrl(), "https://flightexpert.com/");
 
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://flightexpert.com/");
+
         signinPage.addScreenShoot("Home Page after successful sign in");
     }
 
@@ -166,19 +167,22 @@ public class SignInDefs {
     @And("Sign in button is present")
     public void signInButtonIsPresent() throws InterruptedException{
 //        softAssert.assertTrue(signinPage.getEnableStatus(signinPage.signinButton));
-        Assert.assertTrue(signinPage.getEnableStatus(signinPage.signinButton));
+//        Assert.assertTrue(signinPage.getEnableStatus(signinPage.signinButton));
+        Assert.assertTrue(signinPage.getDisplayStatus(signinPage.signinButton));
     }
 
     @And("Sign in with Facebook button is present")
     public void signInWithFacebookButtonIsPresent() throws InterruptedException{
 //        softAssert.assertTrue(signinPage.getEnableStatus(signinPage.facebookButton));
-        Assert.assertTrue(signinPage.getEnableStatus(signinPage.facebookButton));
+//        Assert.assertTrue(signinPage.getEnableStatus(signinPage.facebookButton));
+        Assert.assertTrue(signinPage.getDisplayStatus(signinPage.facebookButton));
     }
 
     @And("Sign in with Google button is present")
     public void signInWithGoogleButtonIsPresent() throws InterruptedException{
 //        softAssert.assertTrue(signinPage.getEnableStatus(signinPage.googleButton));
-        Assert.assertTrue(signinPage.getEnableStatus(signinPage.googleButton));
+//        Assert.assertTrue(signinPage.getEnableStatus(signinPage.googleButton));
+        Assert.assertTrue(signinPage.getDisplayStatus(signinPage.googleButton));
     }
 
     @And("Create an account link text is present")
@@ -191,7 +195,7 @@ public class SignInDefs {
     }
 
     @And("Sign in button colour is matched with design document")
-    public void signInButtonColourIsMatchedWithDesignDocument() throws InterruptedException{
+    public void signInButtonColourIsMatchedWithDesignDocument(){
 
     }
 
@@ -275,5 +279,33 @@ public class SignInDefs {
     @And("User should see the profile option on home page")
     public void userShouldSeeTheProfileOptionOnHomePage() throws InterruptedException{
         Assert.assertTrue(signinPage.getDisplayStatus(homePage.profile));
+    }
+
+    @And("Sign in button is clickable")
+    public void signInButtonIsClickable() throws InterruptedException {
+        Assert.assertTrue(signinPage.getEnableStatus(signinPage.signinButton));
+    }
+
+    @And("Sign in button is labeled as {string}")
+    public void signInButtonIsLabeledAs(String arg0) throws InterruptedException {
+        Assert.assertEquals(signinPage.getElementText(signinPage.signinButton),arg0);
+    }
+
+    @And("Sign in button color is red")
+    public void signInButtonColorIsRed() throws InterruptedException{
+//        System.out.println(getDriver().findElement(signinPage.signinButton).getCssValue("background-color"));
+        Assert.assertEquals(signinPage.getElementCssValue(signinPage.signinButton,"background-color"),"rgba(235, 25, 51, 1)", "button colour not matched");
+    }
+
+    @And("Sing in button colour changed when hover over the button")
+    public void singInButtonColourChangedWhenHoverOverTheButton() throws InterruptedException {
+        signinPage.hoverOnElement(signinPage.signinButton);
+        String actualCssValue = signinPage.getElementCssValue(signinPage.signinButton, "background-color");
+        Assert.assertEquals(actualCssValue, "rgba(47, 5, 10, 1)","Colour didn't match");
+    }
+
+    @And("Sign in button colour is {string} after hover")
+    public void signInButtonColourIsAfterHover(String arg0) throws InterruptedException {
+        Assert.assertEquals(signinPage.getElementCssValue(signinPage.signinButton, "background-color"),arg0);
     }
 }

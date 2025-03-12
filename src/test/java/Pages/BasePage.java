@@ -46,6 +46,11 @@ public class BasePage extends DriverSetup {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return getElement(locator).getDomAttribute(attributeName);
     }
+
+    public String getElementCssValue(By locator, String propertyName) throws InterruptedException{
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getCssValue(propertyName);
+    }
+
     public boolean getDisplayStatus(By locator) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return getElement(locator).isDisplayed();

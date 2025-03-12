@@ -14,7 +14,8 @@ public class SigninPage extends BasePage{
     public By eyeButton = By.xpath("(//*[name()='svg'][@class='svg-inline--fa fa-eye-slash cursor-pointer'])[1]");
     public By forgetPassword = By.xpath("//button[normalize-space()='Forgot Password?']");
     public By closeButton = By.className("btn-close");
-    public By createAccount = By.xpath("//button[text()='Create an Account']");
+//    public By createAccount = By.xpath("//button[text()='Create an Account']");
+    public By createAccount = By.cssSelector(".login.text-decoration-none.text-clr-red.bg-transparent.border-0");
     public By facebookButton = By.xpath("//div[normalize-space()='Facebook']");
     public By googleButton = By.xpath("//span[normalize-space()='Google']");
 

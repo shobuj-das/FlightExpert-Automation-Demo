@@ -10,13 +10,13 @@ public class Hooks {
     public static String browserName = System.getProperty("browser", "Chrome");
 
     @Before
-    public void start() throws InterruptedException {
+    public void beforeScenario() throws InterruptedException {
         openABrowser(browserName);
     }
 
 
     @After
-    public void close() throws InterruptedException {
+    public void afterScenario() throws InterruptedException {
         closeBrowser();
     }
 }

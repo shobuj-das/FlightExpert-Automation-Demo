@@ -1,0 +1,7 @@
+// valid credentials
+shobuj@yopmail.com : shobuj1234
+
+// generating Allure report
+allure generate ./allure-results --clean
+// display Allure report using local server
+allure open ./allure-report/
