@@ -9,4 +9,3 @@ This project is a **Cucumber-based automation framework** using **Selenium and T
 - **TestNG** (v7.8.0)
 - **Allure Reporting** (v2.24.0)
 
-### Test cases: [Click here](https://docs.google.com/spreadsheets/d/1rFeV41n414pqqF4WHT-vvRa_Ig6yrAQU/edit?gid=414538291#gid=414538291)
